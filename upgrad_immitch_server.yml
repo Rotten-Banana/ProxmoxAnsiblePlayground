@@ -1,0 +1,20 @@
+- name: Run docker compose pull and up
+  hosts: immitch
+  tasks:
+    - name: Pull latest Docker image
+      ansible.builtin.shell: |
+        docker compose pull
+      args:
+        chdir: /immich-app   # ensure you're in the right directory
+    
+    - name: Start the container
+      ansible.builtin.shell: |
+        docker compose up -d
+      args:
+        chdir: /immich-app
+
+    - name: Prune dnagling images
+      ansible.builtin.shell: |
+        docker image prune --force
+      args:
+        chdir: /immich-app

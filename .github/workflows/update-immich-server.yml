@@ -18,6 +18,14 @@
           with:
             service-key: ${{ secrets.TWINGATE_SERVICE_KEY }} # Reference your secret
 
-        - name: Ping a private resource
-          run: |
-            ping -c 4 192.168.0.249
+        - name: Run playbook
+          uses: dawidd6/action-ansible-playbook@v2
+          with:
+            # Required, playbook filepath
+            playbook: upgrade_immitch_server.yml
+            # Optional, directory where playbooks live
+            directory: ./
+            # Optional, literal inventory file contents
+            inventory: ./inventory.ini
+            # Optional, encrypted vault password
+            vault_password: ${{secrets.ANSIBLE_VAULT_PASSWORD}}

@@ -2,7 +2,7 @@
 
     on:
       schedule:
-        - cron: 0 0 23 ? * * * # Run daily at 11:00 PM
+        - cron: '0 23 * * *' # Run daily at 11:00 PM
       workflow_dispatch:
 
     jobs:
@@ -19,5 +19,5 @@
             service-key: ${{ secrets.TWINGATE_SERVICE_KEY }} # Reference your secret
 
         - name: Ping a private resource
-        run: |
-          ping -c 4 192.168.0.249
+          run: |
+            ping -c 4 192.168.0.249

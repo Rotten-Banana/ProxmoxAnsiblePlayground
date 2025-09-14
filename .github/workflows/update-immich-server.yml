@@ -1,0 +1,23 @@
+    name: Update Immich Server
+
+    on:
+      schedule:
+        - cron: 0 0 23 ? * * * # Run daily at 11:00 PM
+      workflow_dispatch:
+
+    jobs:
+      build:
+        runs-on: ubuntu-latest # Or your desired runner
+
+        steps:
+        - name: Checkout code
+          uses: actions/checkout@v4
+
+        - name: Connect to Twingate
+          uses: twingate/github-action@v1 # Use the latest version
+          with:
+            service-key: ${{ secrets.TWINGATE_SERVICE_KEY }} # Reference your secret
+
+        - name: Ping a private resource
+        run: |
+          ping -c 4 192.168.0.249

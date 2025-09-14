@@ -23,9 +23,9 @@
           with:
             # Required, playbook filepath
             playbook: upgrade_immitch_server.yml
-            # Optional, directory where playbooks live
-            directory: ./
             # Optional, literal inventory file contents
-            inventory: ./inventory.ini
+            inventory: |
+              [immitch]
+              192.168.0.249
             # Optional, encrypted vault password
             vault_password: ${{secrets.ANSIBLE_VAULT_PASSWORD}}

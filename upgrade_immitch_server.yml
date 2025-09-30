@@ -14,3 +14,6 @@
     - name: Prune dnagling images
       community.docker.docker_prune:
         images: true
+        timeout: 300
+      retries: 3
+      delay: 10

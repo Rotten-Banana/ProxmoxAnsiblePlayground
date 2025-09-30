@@ -1,8 +1,8 @@
     name: Update Immich Server
 
     on:
-      #schedule:
-        #- cron: '0 23 * * *' # Run daily at 11:00 PM
+      schedule:
+        - cron: '0 23 * * *' # Run daily at 11:00 PM
       workflow_dispatch:
 
     jobs:
